@@ -7,7 +7,7 @@ export const TransactionList = () => {
   const {getTransactions, transactions } = useContext(GlobalContext);
   useEffect(() => {
     getTransactions();
-  } , [getTransactions])
+  }, []);
 
   return (
     <>

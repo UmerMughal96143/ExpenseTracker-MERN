@@ -1,4 +1,4 @@
-const Transaction = require('../modal/Transaction');
+const Transaction = require('../modal/Transactions');
 
 
 // Get All Transactons
@@ -12,7 +12,7 @@ exports.getTransactions = async(req , res , next) => {
         return res.status(200).json({
             success : true ,
             count : transactions.length ,
-            data : transactions
+            data : transactions,
         })
     } catch (error) {
         return res.status(500).json({
@@ -41,7 +41,7 @@ exports.addTransactions = async(req , res , next) => {
     } catch (err) {
       if (err.name === "ValidationError") {
       const messages = Object.values(err.errors).map(val => val.message)
-      console.log(`'ERRRRRRRRORRR  : ' ${messages} `   )
+      
         return res.status(500).json({
           success: false,
           err: messages,

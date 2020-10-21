@@ -1,24 +1,27 @@
-import React from 'react';
-import { Header } from './components/Header';
-import { Balance } from './components/Balance';
-import { IncomeExpenses } from './components/IncomeExpenses';
-import { TransactionList } from './components/TransactionList';
-import { AddTransaction } from './components/AddTransaction';
+import React from "react";
+import { GlobalProvider } from "./context/GlobalState";
+import { MainApp } from "./components/MainApp";
+import { Switch, Route } from "react-router-dom";
+import ButtonAppBar from "./components/Header.jsx";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 
-import { GlobalProvider } from './context/GlobalState';
+import "./App.css";
 
-import './App.css';
 
 function App() {
+  
   return (
+    // <GlobalProvider>
     <GlobalProvider>
-      <Header />
-      <div className="container">
-        <Balance />
-        <IncomeExpenses />
-        <TransactionList />
-        <AddTransaction />
-      </div>
+      <ButtonAppBar />
+      <Switch>
+        <Route exact path="/" component={MainApp}/>
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signup" component={SignUp} />
+        
+      </Switch>
+   
     </GlobalProvider>
   );
 }

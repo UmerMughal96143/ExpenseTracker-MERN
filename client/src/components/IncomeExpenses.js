@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { numberWithCommas } from "../utils/format";
+import { numberWithCommas } from "../utils/Format";
 
 
 export const IncomeExpenses = () => {

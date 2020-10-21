@@ -5,7 +5,8 @@ const morgan = require("morgan");
 const connectDB = require('./config/db');
 dotenv.config({path : './config/config.env'})
 
-const transactions = require('./routes/transaction');
+const transactions = require('./routes/Transactions');
+const users = require('./routes/User');
 const { json } = require('express');
 connectDB();
 const app = express();
@@ -16,7 +17,10 @@ if(process.env.NODE_ENV === 'development'){
 
 const PORT = process.env.PORT || 5000 ;
 
-app.use('/api/v1/transactions' , transactions)
+app.use('/api/v1/transactions' , transactions);
+app.use("/api/v1/users" , users);
+
+
 app.listen(
   PORT,
   console.log(
